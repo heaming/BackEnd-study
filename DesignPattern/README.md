@@ -1,14 +1,16 @@
 # 디자인패턴
 
----
-##**Proxy 프록시 패턴**
+
+
+
+## **Proxy 프록시 패턴**
 
 - 실제 비즈니스 로직과 그 외의 코드를 분리하는 객체를 만드는 패턴
 - Proxy는 `대리인`이라는 뜻을 가지고 있다. Java에서 RealSubject는 자신의 기능에만 집중을 하고, 그 이외의 `부가 기능 제공, 접근 제어, 로깅, 트랜잭션` 등의 역할을 Proxy 객체에게 위임한다.
 - `SRP`를 지향하는 코드를 작성할 수 있다.
 - interface 사용시, 구현체로 Proxy를 사용할 수 있다. 이 경우, RealSubject에 직접 접근하지 않고, 한번 우회하여 접근하도록 되어있다. 즉, **흐름제어**가 가능하다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/374eaf6c-1adb-415d-83dc-6d3e7e4969fc/Untitled.png)
+[![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/374eaf6c-1adb-415d-83dc-6d3e7e4969fc/Untitled.png)](https://www.notion.so/iamheaming/String-Boxing-099aee48a9ff4c95af039f3c45aa7eed#3442e34d832b4fb58aba243b7da481e2)
 
 ```java
 // interface
@@ -86,7 +88,7 @@ public class Main {
 
 ---
 
-##**싱글톤**
+## **싱글톤**
 
 생성 패턴 중 하나로, 인스턴스를 만드는 절차를 추상화하는 패턴이다. 생성 패턴은 객체를 생성, 합성하는 방법이나, 객체의 표현 방법을 시스템과 분리해준다.
 
@@ -238,30 +240,32 @@ public class Main {
     }
     ```
 
-
-🍃**Spring과 싱글톤**
+<br/>
+🍃 **Spring과 싱글톤**
 
 싱글톤 패턴에는 문제점들이 있다. 주로, 어플리케이션의 **유연성**을 떨어트리는 단점이다. 하지만 **SPIRNG**에서 대부분의 단점을 해결해주고 있다.
 
-<aside>
-📌 **단점**
-- 싱글톤 패턴을 구현하는 코드 양이 많아진다.
-- 클라이언트가 구현 클래스에 의존한다. → DIP, OCP 위반
-- 테스트가 어렵다.
-- 내부 속성을 수정, 초기화 하기 어렵다.
-- private 생성자로 자식 클래스를 만들기 어렵다.
+<br/>
 
-</aside>
+> 📌단점
+> - 싱글톤 패턴을 구현하는 코드 양이 많아진다.
+> - 클라이언트가 구현 클래스에 의존한다. → DIP, OCP 위반
+> - 테스트가 어렵다.
+> - 내부 속성을 수정, 초기화 하기 어렵다.
+> - private 생성자로 자식 클래스를 만들기 어렵다.
+
+<br/>
 
 **스프링 컨테이너**는 `Bean`에 객체를 단 1개 등록함으로써, 객체 인스턴스를 싱글톤으로 관리한다. 이런 스프링의 객체 생성, 관리 기능을 `Singleton Registry`이라고 한다. 하지만 객체 상태를 **stateful 하게 설계하면 절대** 안된다. 객체 인스턴스를 하나만 생성해서 공유하는 상황에서 반드시 주의할 점이다.
 
-<aside>
-📌 **싱글톤 주의점**
-- 무상태(stateless)로 설계한다.
-- 특정 클라이언트에 의존적인 필드가 있으면 안된다.
-- 공유 필드 대신, local field, parameter, ThreadLocal을 사용한다.
+<br/>
 
-</aside>
+> 📌싱글톤 주의점
+> - 무상태(stateless)로 설계한다.
+> - 특정 클라이언트에 의존적인 필드가 있으면 안된다.
+> - 공유 필드 대신, local field, parameter, ThreadLocal을 사용한다.
+
+<br/>
 
 - **@Configuration**
 
